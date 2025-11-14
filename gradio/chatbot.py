@@ -1,21 +1,25 @@
-import gradio as gr
+import gradio as gr   #hızlı chat arayüz kütüphanesi
 
-def respond(message: str, history: list[dict] | None = None) -> str:
+# mesajları işleyen fonksiyon
+def respond(message: str, history: list[dict] | None = None) -> str:   
     if not message:
         return "Yardım etmeye hazırım!"
     return f"Bu mesajı attınız: '{message}'. Başka ne yapmak istersiniz"
 
+
+# tema oluşturma 
 starter_theme = gr.themes.Soft(primary_hue="cyan", neutral_hue="slate")
 
+# mesaj arayüzü ayarları
 demo = gr.ChatInterface(
     fn=respond,
-    type="messages",  # ChatInterface için önemli
+    type="messages", 
     chatbot=gr.Chatbot(
         label="Bootcamp Bot",
-        height=420,
+        height=400,
         placeholder="Bot cevapları burada gözükecek",
         show_copy_button=True,
-        type="messages",   # Chatbot için de ekledik
+        type="messages",  
     ),
     textbox=gr.Textbox(
         label="Kullanıcı mesajı",
