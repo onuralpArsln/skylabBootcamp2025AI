@@ -1,51 +1,38 @@
 import gradio as gr
 
-
-def respond(message: str, history: list[tuple[str, str]] | None = None) -> str:
-    """
-    Return a simple tutorial-friendly response to the user's message.
-
-    Parameters
-    ----------
-    message:
-        Latest user input from the chat box.
-    history:
-        Prior conversation turns supplied by Gradio. Unused here but kept
-        for clarity so new learners can see where context would be provided.
-    """
+def respond(message: str, history: list[dict] | None = None) -> str:
     if not message:
-        return "I'm here when you're ready to chat!"
-
-    # Keep the logic intentionally simple for bootcamp starters.
-    return f"I heard you say: '{message}'. That's great! What would you like to try next?"
-
+        return "Yardım etmeye hazırım!"
+    return f"Bu mesajı attınız: '{message}'. Başka ne yapmak istersiniz"
 
 starter_theme = gr.themes.Soft(primary_hue="cyan", neutral_hue="slate")
 
 demo = gr.ChatInterface(
     fn=respond,
+    type="messages",  # ChatInterface için önemli
     chatbot=gr.Chatbot(
         label="Bootcamp Bot",
         height=420,
-        placeholder="Responses from the bot will show up here.",
+        placeholder="Bot cevapları burada gözükecek",
         show_copy_button=True,
+        type="messages",   # Chatbot için de ekledik
     ),
     textbox=gr.Textbox(
-        label="Your message",
-        placeholder="Try saying hello or ask what you can learn.",
+        label="Kullanıcı mesajı",
+        placeholder="Mesaj atarak kullanmaya başlayın.",
         autofocus=True,
     ),
-    title="Bootcamp Starter Chatbot",
+    title="Bootcamp Temel Bot",
     description=(
-        "Type a message to see how the chatbot can read your input and reply. "
-        "This demo keeps the logic simple so you can focus on learning Gradio."
+        "Bir mesaj atarak sistemin nasıl çalıştığını görün. "
+        "Bu gradio kullanımı için basit bir örnektir."
     ),
-    examples=["Hello there!", "What can I learn today?", "How does Gradio work?"],
+    examples=["Merhaba!", "Bugün ne yemek yapsam?", "Gradio nasıl çalışır?"],
     theme=starter_theme,
     css="""
         .gradio-container {
            background: #001245;
-background: linear-gradient(90deg, rgba(0, 18, 69, 1) 0%, rgba(15, 23, 42, 1) 50%, rgba(0, 49, 184, 1) 100%);
+           background: linear-gradient(90deg, rgba(0, 18, 69, 1) 0%, rgba(15, 23, 42, 1) 50%, rgba(0, 49, 184, 1) 100%);
         }
 
         .gradio-container .gr-button-primary {
@@ -63,9 +50,4 @@ background: linear-gradient(90deg, rgba(0, 18, 69, 1) 0%, rgba(15, 23, 42, 1) 50
     """,
 )
 
-
-if __name__ == "__main__":
-    
-    demo.launch()
-
-
+demo.launch(share=True)
