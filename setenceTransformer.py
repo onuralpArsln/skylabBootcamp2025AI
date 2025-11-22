@@ -10,7 +10,7 @@ with open("mydoc.txt", "r", encoding="utf-8") as f:
 
 
 # --- 2) Chunk'lara böl ---
-def chunk_text(text, max_len=500):
+def chunk_text(text, max_len=1000):
     chunks = []
     words = text.split()
 
@@ -54,7 +54,7 @@ def search(query, top_k=3):
 
 
 # TEST
-results = search("Faruk neden zamanda yolculuk yapıyor?")
+results = search("Atlas Synchron Dataworks ne yapıyor?")
 for text, score in results:
     print("SCORE:", score)
     print(text[:300], "\n")
