@@ -22,11 +22,11 @@ chat = client.chats.create(
 )
 
 # 2) Chate mesaj at ve cevabı response olarak kaydet 
-response = chat.send_message("Explain how AI works in a few words")
+response = chat.send_message("AI nasıl çalışır")
 # response cevabını ekrana yazdır
 print(response.text)
 
 # 3) Aynı chat üzerinde yeni mesaj at ve cevabı response olarak kaydet 
-response = chat.send_message("Can you make it even shorter?")
+response = chat.send_message("Daha kısa anlatır mısın?")
 # response cevabını ekrana yazdır
 print(response.text)

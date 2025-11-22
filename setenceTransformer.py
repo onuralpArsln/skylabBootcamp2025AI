@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-# --- 1) Tekst yükle ---
+# --- 1) Metin yükle ---
 with open("mydoc.txt", "r", encoding="utf-8") as f:
     full_text = f.read()
 
