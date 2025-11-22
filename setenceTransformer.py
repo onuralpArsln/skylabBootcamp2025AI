@@ -1,4 +1,7 @@
-# python3.12 -m pip install sentence-transformers scikit-learn numpy
+# python3.12 -m pip install sentence-transformers
+# python3.12 -m pip install scikit-learn
+# python3.12 -m pip install numpy
+
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
