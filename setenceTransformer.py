@@ -31,7 +31,7 @@ def chunk_text(text, max_len=1000):
         chunks.append(" ".join(cur))
     return chunks
 
-chunks = chunk_text(full_text, max_len=500)
+chunks = chunk_text(full_text, max_len=1000)
 
 
 # --- 3) Embedding modeli ---
@@ -60,4 +60,4 @@ def search(query, top_k=3):
 results = search("Atlas Synchron Dataworks ne yapıyor?")
 for text, score in results:
     print("SCORE:", score)
-    print(text[:300], "\n")
+    print(text[:500], "\n")
